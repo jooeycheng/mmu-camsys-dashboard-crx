@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "version": "1.0.23",
-  "name": "CaMSys Dashboard",  
+  "name": "MMU CaMSys Dashboard",  
   "description": "Replaces login page design and adds a dashboard feature to CaMSys.",
 
   "background": {
