@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+	<div id="background-container">
+		<section id="login-container">			
+			<div id="logo">
+				<p id="mmulogo"><img id=""></p>				
+		  		<h1 id="logotitle">CaMSys Dashboard</h1>
+		  		<span id="betatag">BETA</span>
+			</div>
+			<div id="login">
+				<p id="invaliduserpass">&nbsp;</p>
+				<form action="?cmd=login&languageCd=ENG" method="post" id="" name="login" autocomplete="off">
+					<input type="hidden" name="timezoneOffset" value="0">
+					<input id="userid" name="userid" type="text" placeholder="Username" autofocus/>
+					<input id="pwd" name="pwd" type="password" placeholder="Password"/>
+					<input type="submit" value="Log in"/>
+				</form>
+			</div>
+		</section>
+		<section id="below">
+			<!-- <a id="disable" href="chrome://extensions">Disable Extension</a> -->
+			<!-- not allowed to load local resource -->			
+			<a id="versionNumber" onclick="slider_knownissue()"></a>
+			<div id="slider_knownissue">
+				<h2>Make sure you are updated to the latest version</h2>
+				<!-- <h2>URL &#x2192; <a id="chromeExtPage" target="_blank">chrome://extensions/</a></h2> -->	      	
+			</div>
+		</section>		
+	</div>
+</body>
+</html>

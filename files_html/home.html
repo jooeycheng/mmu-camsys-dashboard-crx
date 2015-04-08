@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="dashboard">
+<div id="dashboard_container">
+<div id="loadingOverlay"><img></div>
+
+<div id="header_panel">
+	<div id="header_toolbar">
+		<div id="toolbar_container">
+			<span id="userId">0000000000</span> &nbsp <span id="userName">Name</span>
+			<div class="btn_logout button" title="Logout" onclick="logout()"><span class="fa fa-sign-in"></span></div>
+		</div>		
+	</div>
+
+	<div id="header_panel_container">
+
+		<div id="printHeader">			
+			<h1><img>CaMSys Dashboard</h1>
+		</div>
+
+		<div id="section_attendance" class="card">
+			<h1>Attendance</h1>
+		</div>
+
+		<div id="section_schedule" class="card">
+			<h1>Schedule
+				<div class="button fab_blue sch_btn btn1" title="Toggle new/old venue code (Cyberjaya Only)" onclick="toggleRoomNumbering()" id="toggleRoomNumberingButton">
+					<span class="fa fa-sort-numeric-asc"></span></div>
+				<div class="button fab_blue sch_btn btn2" title="Print schedule" onclick="window.print()"><span class="fa fa-print"></span></div>
+			</h1>
+			
+			<table id="theSchedule" class="table_schedule">
+				<tr>
+					<th class="time">Time</th>
+					<th class="day">Mon</th>
+					<th class="day">Tue</th>
+					<th class="day">Wed</th>
+					<th class="day">Thu</th>
+					<th class="day">Fri</th>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">8am</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">9am</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">10am</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">11am</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">12pm</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">1pm</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">2pm</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">3pm</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">4pm</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">5pm</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<th class="time" rowspan="2">6pm</th>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+				<tr>					
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+					<td class="day">&nbsp</td>
+				</tr>
+
+				<tr>
+					<td colspan="3" class="subjects">
+						<!-- <p class="">&nbsp</p> -->
+					</td>
+					<td colspan="3" class="subjects">
+						<!-- <p class="">&nbsp</p> -->						
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="section_calendar" class="card">
+			<h1>Academic Date</h1>
+			<div class="itemlist">
+				<h3 id="theDate"></h3>
+				<div class="itemlist_advisor">
+					<h2 id="theWeek" title="First day of week is Monday"></h2>
+				</div>
+			</div>
+		</div>
+
+		<div id="section_finance" class="card">
+			<h1>Finance</h1>
+			<div class="itemlist">
+				<h3>Amount Due</h3>
+				<div class="itemlist_balance">
+					<h4>RM</h4>
+					<h2 id="amountDue">$.$$</h2>
+				</div>				
+			</div>
+		</div>		
+
+		<div id="section_advisor" class="card">
+			<h1>Advisor</h1>
+			<div class="itemlist">
+				<h3>Name</h3>
+				<div class="itemlist_advisor">
+					<h2 id="advisorName">Advisor Name</h2>
+				</div>
+				<!-- if in future able to scrape office data -->
+				<!-- <h3>Office</h3>
+				<div class="itemlist_advisor">
+					<h2>N/A</h2>
+				</div>				 -->
+			</div>
+		</div>
+		
+	</div>
+</div>
+</div>
+</div>
+</body>
+</html>

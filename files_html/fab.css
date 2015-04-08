@@ -1,0 +1,32 @@
+a.fab {
+	cursor: pointer;
+}
+
+a.fab div {
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;	
+	box-shadow: 0px 1px 5px rgba(0,0,0,0.7);
+	position: fixed;
+	right: 25px;
+	bottom: 25px;
+	padding: 16px;
+	/*z-index: 600;*/
+	fill: #FFF;	
+}
+a.fab div:hover {
+	background: #03a9f4;
+}
+div.fab_blue {
+	/*background: #5677fc;*/
+	/*background: #03A9F4;*/
+	background: #039BE5;
+
+
+}
+div.fab_purple {
+	background: #673AB7;	
+}
+#fab_minimize {
+	transform: rotate(90deg);
+}

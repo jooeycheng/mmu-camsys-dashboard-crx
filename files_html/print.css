@@ -1,0 +1,76 @@
+html,body {
+	/*display: none;*/
+	/*max-width: 1366px;*/
+	/*min-width: 1360px;*/
+	background-color: #FFF;
+	margin: 0;
+	display: block;	
+	/*padding: 0 100px;*/
+}
+
+#dashboard {
+	display: block;
+	background: #FFF;
+	width: 100%;
+}
+#header_toolbar {
+	visibility: hidden;
+}
+#section_attendance {
+	display: none;
+}
+#section_calendar {
+	display: none;
+}
+#section_finance {
+	display: none;
+}
+#section_advisor {
+	display: none;
+}
+a.fab {
+	display: none;	
+}
+#section_schedule {
+	margin: 0;	
+	padding: 0;
+	box-shadow: none;
+	width: 100%;
+}
+#section_schedule h1 {
+	display: none;
+}
+#theSchedule {
+	margin: 0;
+	width: 80%;
+	margin: auto;
+}
+#theSchedule th {
+	font-weight: lighter;
+	font-size: 14px;
+}
+#theSchedule td {
+	font-weight: lighter;
+	font-size: 14px;
+}
+
+#printHeader {
+	display: block;
+	width: 80%;
+	margin: auto;
+	padding-bottom: 30px;
+}
+#printHeader h1 {
+	margin: 0;
+	padding: 0;
+	font-family: 'RobotoDraft', sans-serif;
+	font-weight: lighter;
+	font-size: 26px;
+	color: rgba(0,0,0,0.8);
+}
+#printHeader img {
+	position: relative;
+	top: 10px;
+	width: 40px;
+	margin-right: 10px;
+}
