@@ -1,9 +1,9 @@
-CaMSys-Dashboard
-================
+MMU CaMSys Dashboard
+====================
 
 (Google Chrome browser extension)
 
-For Student Account Only.
+For Student account only.
 
 CaMSys Dashboard adds a dashboard view feature into CaMSys.
 It grabs and places student's frequently viewed information (Attendance, Schedule, Finance, Advisor) onto the dashboard.
