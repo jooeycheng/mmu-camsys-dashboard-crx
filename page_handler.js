@@ -460,8 +460,8 @@ function formatScheduleTimeData(right_data_string) {
     if (Max_timeEnd < class_time_end_24)
       Max_timeEnd = class_time_end_24;
 
-    // DEBUGGING
-    if (false) {      
+    // DEBUGGING    
+    if (false) {
       console.log("#function: formatScheduleTimeData");
       console.log("day:", classObj.day);
       console.log("time start:", classObj.timeStart);
@@ -490,6 +490,8 @@ function formatSchedule(dataSchedule) {
 
   var theSchedule = [];
 
+  // console.log('dataSchedule', dataSchedule);
+
   $.each(dataSchedule, function(i, el) {
 
       var subCodeName = $(el).find(".PAGROUPDIVIDER").html(); // Subject code & name
@@ -517,7 +519,21 @@ function formatSchedule(dataSchedule) {
       var secA = $(sectionContent[0]).html();
       var secB = $(sectionContent[1]).html();
       
+      // console.log('subContent Before', subContent);
       subContent.splice(0, 4); // Remove first 4 elements (Status, Units (Credit Hours), Grading, Grade)
+      // console.log('subContent After', subContent);      
+
+
+      // #BugFix on 20150409
+      // 2nd CaMSys Trimester (2015 March) onwards,
+      // in Schedule List View,
+      // CaMSys removed a column between 'Grading' and 'Deadlines' called 'Grade'
+      // this caused 'subContent' array to be one element short, breaking it
+      // subContent[1] is now subContent[0]
+      // temp fix: (add dummy element to replace missing element)
+      subContent.unshift("-");
+      // end BugFix
+
 
       var indexCut = -2;
       var Lecture;
@@ -576,7 +592,7 @@ function formatSchedule(dataSchedule) {
             timeArrayLec.push(Lecture[2 + ii]);  // index 2 = day + time
             timeArrayLec.push(Lecture[3 + ii]);  // index 3 = venue        
             // Skip index 4 (Start/End date)
-          }
+          }          
           scheduleObj.lecTime = formatScheduleTimeData(timeArrayLec);
         }
 
