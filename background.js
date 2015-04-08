@@ -48,7 +48,9 @@ function checkUpdated() {
 }
 
 function showChangelog() {
-  // window.open(chrome.extension.getURL("files_html/updated.html"));
+  // temp disabled, can be annoying
+  // only enable if major update & users need to be informed of update
+  window.open(chrome.extension.getURL("files_html/updated.html"));
 }
 
 function showFirstRun() {
