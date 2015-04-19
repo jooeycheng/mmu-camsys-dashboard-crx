@@ -50,7 +50,10 @@ function checkUpdated() {
 function showChangelog() {
   // temp disabled, can be annoying
   // only enable if major update & users need to be informed of update
-  window.open(chrome.extension.getURL("files_html/updated.html"));
+
+  // seems to be a bug, supposed to show only once, but shows on each update check
+  // need to confirm this bug, and fix
+  // window.open(chrome.extension.getURL("files_html/updated.html"));
 }
 
 function showFirstRun() {
