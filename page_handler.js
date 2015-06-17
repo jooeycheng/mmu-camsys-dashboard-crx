@@ -98,12 +98,12 @@ function hasError() {
 var gotError = false;
 function showPage_Login() {
   gotError = hasError();
-  loadHTMLpage_Login();  
+  loadHTMLpage_Login();
 }
 
 function verifyLoginPageURL() {
 	// links without rubbish will give registry error
-	// sol: redirect to link with rubbish at the end	
+	// sol: redirect to link with rubbish at the end
 	var login_pages = [
 		"https://cms.mmu.edu.my/psp/csprd/?cmd=login&languageCd=ENG&",
 		"https://cms.mmu.edu.my/psp/csprd/?cmd=login&languageCd=ENG",
@@ -191,7 +191,7 @@ function loadHTMLpage_Login() {
       $("#mmulogo img").attr("src", chrome.extension.getURL("icon/icon128.png"));
 
       $("body").css("background", "url(" + chrome.extension.getURL("images/paper.jpg") + ")");
-      
+
       var manifest = chrome.runtime.getManifest();
       // console.log(manifest.name);
       // console.log(manifest.version);
@@ -204,7 +204,7 @@ function loadHTMLpage_Login() {
       // sometimes, url doesnt show errorCode parameter, need to manual check if got error
       if (! getParameterByName('errorCode') && gotError)
         $("#invaliduserpass").html("Invalid Username or Password");
-      
+
     }
   });
 }
@@ -277,7 +277,7 @@ function loadHTMLpage_Home() {
 }
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-// start scrape functions * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+// start scrape functions * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 
 var isDisplayed = 0;
@@ -291,7 +291,7 @@ function updateLoading(section) {
   }
 
   if (isDisplayed == 3)
-    $("#loadingOverlay").fadeOut("slow"); // Finished loading      
+    $("#loadingOverlay").fadeOut("slow"); // Finished loading
 }
 
 function isTitleCaseExcepton(word) {
@@ -300,7 +300,7 @@ function isTitleCaseExcepton(word) {
   for (var i = 0; i < youaretheonlyexception.length; i++)
     if (youaretheonlyexception[i] == word)
       return true;
-  
+
   return false;
 }
 
@@ -345,14 +345,14 @@ function addtoAttArray(string_subject) {
 
 function formatAttArray(myObjectArray) {
   var subjects = myObjectArray;
-  
+
   var distinct_subs_name = [];
   var temp_name = subjects[0].name;
   var temp_code = subjects[0].code;
   distinct_subs_name.push(temp_name);
 
   var array_subs_obj = [];
-  
+
   // INDEX 0
   var sub_obj = new Object();
       sub_obj.name = temp_name;
@@ -364,8 +364,8 @@ function formatAttArray(myObjectArray) {
   // INDEX 1 & ABOVE
   // ADD UNIQUE SUBJECT NAMES TO NEW ARRAY
   for (var i = 1; i < subjects.length; i++) { // Get all unique subjects, add to array
-    var temp_name_compare = subjects[i].name;    
-    if (temp_name != temp_name_compare) {      
+    var temp_name_compare = subjects[i].name;
+    if (temp_name != temp_name_compare) {
       temp_code = subjects[i].code;
       temp_name = temp_name_compare;
       distinct_subs_name.push(temp_name);
@@ -398,21 +398,21 @@ function formatAttArray(myObjectArray) {
             array_subs_obj[i].att_tut = subjects[ii].current_att;
             // console.log("subjects[ii].name", subjects[ii].name);
             // console.log("tut_att", subjects[ii].current_att);
-          }          
+          }
         }
       }
     }
   }
 
-  // DEBUGGING - PRINTING  
+  // DEBUGGING - PRINTING
   // $.each(array_subs_obj, function(i, el){
   //   console.log(i, el.code, el.name, el.att_tut, el.att_lec);
-  // });  
+  // });
 
   return array_subs_obj;
 }
 
-// STUDENT CENTER * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+// STUDENT CENTER * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 function replaceAll(find, replace, str) {
   return str.replace(new RegExp(find, 'g'), replace);
@@ -430,21 +430,21 @@ function formatScheduleTimeData(right_data_string) {
   for (var i = 0; i < right_data_string.length; i+=2) {
     class_day = right_data_string[i].substr(0, 2);
     var time = right_data_string[i].substr(3);
-    class_venue = right_data_string[i + 1];    
+    class_venue = right_data_string[i + 1];
     var separated = class_venue.split("-");
 
     var elevenOrTwelve = time.substr(0, 3);
     if (elevenOrTwelve == "10:" || elevenOrTwelve == "11:" || elevenOrTwelve == "12:")
       class_time_start = time.substr(0, 7);
     else
-      class_time_start = time.substr(0, 6);    
+      class_time_start = time.substr(0, 6);
 
-    elevenOrTwelve = time.substr(time.length - 7, 3);    
+    elevenOrTwelve = time.substr(time.length - 7, 3);
     if (elevenOrTwelve == "10:" || elevenOrTwelve == "11:" || elevenOrTwelve == "12:")
       class_time_end = time.substr(time.length - 7);
     else
       class_time_end = time.substr(time.length - 6);
-    
+
     var classObj = new Object();
     classObj.day = class_day;
     classObj.timeStart = class_time_start;
@@ -460,7 +460,7 @@ function formatScheduleTimeData(right_data_string) {
     if (Max_timeEnd < class_time_end_24)
       Max_timeEnd = class_time_end_24;
 
-    // DEBUGGING    
+    // DEBUGGING
     if (false) {
       console.log("#function: formatScheduleTimeData");
       console.log("day:", classObj.day);
@@ -472,7 +472,7 @@ function formatScheduleTimeData(right_data_string) {
       console.log("");
     }
 
-    classObjAll.push(classObj);        
+    classObjAll.push(classObj);
   };
 
   // DEBUGGING
@@ -495,7 +495,7 @@ function formatSchedule(dataSchedule) {
   $.each(dataSchedule, function(i, el) {
 
       var subCodeName = $(el).find(".PAGROUPDIVIDER").html(); // Subject code & name
-      
+
         var scheduleObj = new Object();
         scheduleObj.code = subCodeName.substr(0, 1) + subCodeName.substr(2, 6);
         scheduleObj.name = subCodeName.substr(11);
@@ -518,10 +518,10 @@ function formatSchedule(dataSchedule) {
       var sectionContent = $(el).find("a.PSHYPERLINK");
       var secA = $(sectionContent[0]).html();
       var secB = $(sectionContent[1]).html();
-      
+
       // console.log('subContent Before', subContent);
       subContent.splice(0, 4); // Remove first 4 elements (Status, Units (Credit Hours), Grading, Grade)
-      // console.log('subContent After', subContent);      
+      // console.log('subContent After', subContent);
 
 
       // #BugFix on 20150409
@@ -557,16 +557,16 @@ function formatSchedule(dataSchedule) {
             runLec = true;
               scheduleObj.lecSection = secA;
           if (secB)
-            runTut = true;              
+            runTut = true;
               scheduleObj.tutSection = secB;
           if (runTut) {
             indexCut = $.inArray("Tutorial", subContent) - 1;
-            if (indexCut < 0) 
-              indexCut = $.inArray("Laboratory", subContent) - 1;            
-              
+            if (indexCut < 0)
+              indexCut = $.inArray("Laboratory", subContent) - 1;
+
             Lecture = subContent.slice(0, indexCut);
             Tutorial = subContent.slice(indexCut);
-          }            
+          }
           else
             Lecture = subContent;
         }
@@ -582,7 +582,7 @@ function formatSchedule(dataSchedule) {
             Tutorial = subContent.slice(0, indexCut);
             Lecture = subContent.slice(indexCut);
           }
-          else 
+          else
             Tutorial = subContent;
         }
 
@@ -590,9 +590,9 @@ function formatSchedule(dataSchedule) {
           for (var ii = 0; ii < Lecture.length; ii+=5) {
             // Skip index 0 & 1 (Class code & lec_tut)
             timeArrayLec.push(Lecture[2 + ii]);  // index 2 = day + time
-            timeArrayLec.push(Lecture[3 + ii]);  // index 3 = venue        
+            timeArrayLec.push(Lecture[3 + ii]);  // index 3 = venue
             // Skip index 4 (Start/End date)
-          }          
+          }
           scheduleObj.lecTime = formatScheduleTimeData(timeArrayLec);
         }
 
@@ -604,11 +604,11 @@ function formatSchedule(dataSchedule) {
             // Skip index 4 (Start/End date)
           }
           scheduleObj.tutTime = formatScheduleTimeData(timeArrayTut);
-        }            
+        }
 
         theSchedule.push(scheduleObj);
 
-      }    
+      }
   });
 
   // properties:
@@ -621,12 +621,12 @@ function formatSchedule(dataSchedule) {
     $.each(theSchedule, function(ii, ell) {
       console.log(ii, ell);
     });
-  }    
+  }
 
   return theSchedule;
 }
 
-// DISPLAY THE DATA * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+// DISPLAY THE DATA * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 function circleGreenOrRed(att) {
   if (att < 50)
@@ -637,12 +637,12 @@ function circleGreenOrRed(att) {
     return "green";
 }
 
-function displayAttendance(noErrors, theAttendanceArray) {  
+function displayAttendance(noErrors, theAttendanceArray) {
   if (noErrors) {
     $.each(theAttendanceArray, function(i, el) {
       var output = "";
       if (i > 0)
-        output += "<hr>";  
+        output += "<hr>";
       output += "<div class='itemlist'>" +
         "<h3>" + el.code + " - " + el.name + "</h3>" +
         "<div class='itemlist_lectut'>" +
@@ -664,12 +664,12 @@ function displayAttendance(noErrors, theAttendanceArray) {
     });
   }
   else {
-    var output = 
+    var output =
       "<div class='itemlist'>" +
       "<h3>" + theAttendanceArray + "</h3>" +
       "</div>";
     $("#section_attendance").append(output);
-  }  
+  }
 }
 
 function addScheduleRows(maxEndTime) {
@@ -694,7 +694,7 @@ function convertTo24hrs(time) {
     // If not 11 or 12, remove ':' symbol
     if (firstTwo != "10" && firstTwo != "11" && firstTwo != "12")
       firstTwo = firstTwo.substr(0, 1);
-    
+
     firstTwo = parseInt(firstTwo);
 
     if (am_pm == "AM") {
@@ -704,7 +704,7 @@ function convertTo24hrs(time) {
         output += "0" + firstTwo;
       else
         output += firstTwo;
-    } 
+    }
     else if (am_pm == "PM") {
       if (firstTwo != 12)
         firstTwo += 12;
@@ -721,7 +721,7 @@ function convertTo24hrs(time) {
 
     output = output.substr(0, 2) + output.substr(3, 2);
     return output;
-  }  
+  }
 }
 
 function printTimeToTable(i, el, timeObj, section) {
@@ -737,15 +737,15 @@ function printTimeToTable(i, el, timeObj, section) {
 
       var duration = 0;
       duration = (timeEnd - timeStart) / 100;
-      duration = duration / 0.5;      
+      duration = duration / 0.5;
       duration = Math.ceil(duration);
 
       var Min = 0800; // Earliest time in schedule - 8am
       var Max = 1900; // Latest time in schedule - 7pm
-      
+
       var x_index = $.inArray(ell.day, days);
       var y_index = 0;
-      
+
       for (var Q = Min; Q < Max; Q += 30) {
 
         if (Q % 100 == 60)
@@ -765,7 +765,7 @@ function printTimeToTable(i, el, timeObj, section) {
           for (var QQ = 1; QQ < duration; QQ ++) {
             $("#section_schedule .table_schedule td.day")
               .eq(theIndex + (QQ * 5))
-              .attr("style", "display:none");              
+              .attr("style", "display:none");
           }
 
           // break the loop once done, looping no longer required
@@ -774,17 +774,17 @@ function printTimeToTable(i, el, timeObj, section) {
         y_index++;
 
       }
-      
-    }); 
+
+    });
 }
 
-function displaySchedule(theScheduleArray) {  
+function displaySchedule(theScheduleArray) {
 
   // theScheduleArray properties:
   // code, name, lecTime, lecSection, tutTime, tutSection
 
   // lecTime & tutTime properties:
-  // day, timeStart, timeEnd, class_venue, venueCode, venueName  
+  // day, timeStart, timeEnd, class_venue, venueCode, venueName
 
   addScheduleRows(Max_timeEnd);
 
@@ -817,7 +817,7 @@ function displaySchedule(theScheduleArray) {
   $.each(theScheduleArray, function(iii, ell) {
     if (iii >= firstColumnHeight)
       theIndex2 = 1;
-    
+
     $("#section_schedule .table_schedule td.subjects")
       .eq(theIndex2)
       .append('<p class="color0' + (iii + 1) + '">' + ell.code + " - " + toTitleCase(ell.name) + '</p>');
@@ -834,7 +834,7 @@ function displayFinance(theFinance) {
   $("#amountDue").html(amountDue);
 }
 
-function displayUsername(theUsername) { 
+function displayUsername(theUsername) {
   // var userId = "XXXXXXXXXX";
   var userId = getCookie("SignOnDefault");
   var userName = toTitleCase(theUsername);
@@ -847,7 +847,7 @@ function displayAcademicDate(trimester) {
   // today  = new Date("Mar 30, 2015"); // testing
   var daysList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var monthsList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  var theDate = today.getDate() + " " + monthsList[today.getMonth()] + " " + today.getFullYear() + " (" + daysList[today.getDay()] + ")";  
+  var theDate = today.getDate() + " " + monthsList[today.getMonth()] + " " + today.getFullYear() + " (" + daysList[today.getDay()] + ")";
   $("#theDate").html(trimester + "<br>" + theDate);
 
   var sem3_2014_2015 = new Date("Mar 30, 2015");
@@ -857,7 +857,7 @@ function displayAcademicDate(trimester) {
 
   var theWeek = Date.dateDiff('w', startSem, today) + 1; // plus 1 cos need +1 only correct, lol
 
-  // if over 28 Dec, -1 (sem break)  
+  // if over 28 Dec, -1 (sem break)
   if (today > new Date("Dec 28, 2014") && today < new Date("Feb 16, 2015")) {
     theWeek -= 1;
   }
@@ -878,23 +878,23 @@ function displayAcademicDate(trimester) {
 }
 
 
-// PAGE FUNCTIONS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+// PAGE FUNCTIONS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 // datepart: 'y', 'm', 'w', 'd', 'h', 'n', 's'
-Date.dateDiff = function(datepart, fromdate, todate) {  
-  datepart = datepart.toLowerCase();  
-  var diff = todate - fromdate; 
-  var divideBy = { w:604800000, 
-                   d:86400000, 
-                   h:3600000, 
-                   n:60000, 
-                   s:1000 };  
-  
+Date.dateDiff = function(datepart, fromdate, todate) {
+  datepart = datepart.toLowerCase();
+  var diff = todate - fromdate;
+  var divideBy = { w:604800000,
+                   d:86400000,
+                   h:3600000,
+                   n:60000,
+                   s:1000 };
+
   return Math.floor( diff/divideBy[datepart]);
 }
 
 
-// AJAX STUFF * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+// AJAX STUFF * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 function ajaxAttendance(theUrl) {
   $.ajax({
@@ -903,7 +903,7 @@ function ajaxAttendance(theUrl) {
     success: function(data) {
       var elements = $("<body>").html(data)[0];
       var theHTML = elements.innerHTML;
-      var found_barred = $(theHTML).find('.SSSMSGINFOTEXT');         
+      var found_barred = $(theHTML).find('.SSSMSGINFOTEXT');
       var found = $(theHTML).find("table").eq(2).find('.PSEDITBOX_DISPONLY');
       var current_trimester = $(found[1]).html();
 
@@ -911,7 +911,7 @@ function ajaxAttendance(theUrl) {
         displayAttendance(false, $(found_barred).html());
       }
       else {
-        var att_array = [];      
+        var att_array = [];
         for (var i = 2; i < found.length; i++) { // START FROM 2 to skip first 2 elements (code & trimester)
           var string = "";
           for (var ii = 0; ii < 9; ii++) {
@@ -923,13 +923,13 @@ function ajaxAttendance(theUrl) {
         };
         var distinct_subs = formatAttArray(att_array);
         // Capitalise each word, unless its supposed to be all caps
-        $.each(distinct_subs, function(i, el){        
+        $.each(distinct_subs, function(i, el){
           el.name = toTitleCase(el.name);
         });
 
         displayAttendance(true, distinct_subs);
       }
-      
+
       displayAcademicDate(current_trimester);
 
       // DEBUGGING
@@ -952,12 +952,12 @@ function ajaxStudentCenter(theUrl) {
     success: function(data) {
       var elements = $("<body>").html(data)[0];
       var theHTML = elements.innerHTML;
-      var data_username = $(theHTML).find("table").eq(4).find('.PATRANSACTIONTITLE');      
+      var data_username = $(theHTML).find("table").eq(4).find('.PATRANSACTIONTITLE');
       var data_finance_debt1 = $(theHTML).find("table").eq(4).find('#SF_PAYMENT_WRK_DESCRLONG');
       var data_finance_debt = $(theHTML).find("table").eq(4).find('#SSF_SS_DERIVED_SSF_MESSAGE_TEXT');
       var data_schedule_class = $(theHTML).find("table").eq(4).find('.PSHYPERLINKDISABLED');
       var data_schedule_time = $(theHTML).find("table").eq(4).find('.PSLONGEDITBOX');
-      
+
       var username = $(data_username).html(); // "JOEY CHENG CHI HAN's Student Center"
       username = username.substr(0, username.length - 17); // "JOEY CHENG CHI HAN"
       displayUsername(username);
@@ -970,16 +970,16 @@ function ajaxStudentCenter(theUrl) {
         amountDue = amountDue.substr(8); // "6,066.72." - 'remove the you owe'
         amountDue = amountDue.substr(0, amountDue.length - 1); // "6,066.72" - remove fullstop at the end
         displayFinance(amountDue);
-      }      
+      }
 
       var advisor = $(data_schedule_class[data_schedule_class.length - 1]).html(); // Advisor
       displayAdvisor(advisor);
-      
+
       var phoneNum = $(data_schedule_time[data_schedule_time.length - 2]).html(); // Phone
 
       var hseAddress = $(data_schedule_time[data_schedule_time.length - 4]).html(); // Home Address
 
-      updateLoading("SC");   
+      updateLoading("SC");
     }
   });
 }
@@ -1003,7 +1003,7 @@ function ajaxSchedule(theUrl) {
   });
 }
 
-// end scrape functions * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+// end scrape functions * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 function showFabButton(showOpenDash) {
@@ -1013,16 +1013,16 @@ function showFabButton(showOpenDash) {
       rel: "shortcut icon",
       type: "text/css",
       href: chrome.extension.getURL("/icon/icon32.png")
-    }).appendTo("head");   
+    }).appendTo("head");
   }
 
   $("<script/>", {
     src: chrome.extension.getURL("jquery.min.js")
-  }).appendTo("head"); 
+  }).appendTo("head");
 
   $("<script/>", {
     src: chrome.extension.getURL("/files_script/fab.js")
-  }).appendTo("head");  
+  }).appendTo("head");
 
   $("<link/>", {
     rel: "stylesheet",
@@ -1032,11 +1032,11 @@ function showFabButton(showOpenDash) {
 
   var openSVG = '<path d="M4 8h4v-4h-4v4zm6 12h4v-4h-4v4zm-6 0h4v-4h-4v4zm0-6h4v-4h-4v4zm6 0h4v-4h-4v4zm6-10v4h4v-4h-4zm-6 4h4v-4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/><path d="M0 0h24v24h-24z" fill="none"/>';
 
-  var closeSVG = 
-    '<path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/>' + 
+  var closeSVG =
+    '<path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/>' +
     '<path d="M0 0h24v24h-24z" fill="none"/>';
 
-  var fab_HTML = '<a id="fab_button" class="fab"><div id="" class="fab_blue">' + 
+  var fab_HTML = '<a id="fab_button" class="fab"><div id="" class="fab_blue">' +
     '<svg id="fab_button_svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">';
 
   if (! showOpenDash)
@@ -1071,48 +1071,48 @@ var url_attendance =
 	"NoCrumbs=yes&" +
 	"PortalKeyStruct=yes";
 
-var url_stdCtr = 
-	"https://cms.mmu.edu.my/psc/csprd/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL?" + 
-	"PORTALPARAM_PTCNAV=HC_SSS_STUDENT_CENTER&" + 
-	"EOPP.SCNode=HRMS&" + 
-	"EOPP.SCPortal=EMPLOYEE&" + 
-	"EOPP.SCName=CO_EMPLOYEE_SELF_SERVICE&" + 
-	"EOPP.SCLabel=Self%20Service&" + 
-	"EOPP.SCPTfname=CO_EMPLOYEE_SELF_SERVICE&" + 
-	"FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_SSS_STUDENT_CENTER&" + 
-	"IsFolder=false&" + 
-	"PortalActualURL=https%3a%2f%2fcms.mmu.edu.my%2fpsc%2fcsprd%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL&" + 
-	"PortalContentURL=https%3a%2f%2fcms.mmu.edu.my%2fpsc%2fcsprd%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL&" + 
-	"PortalContentProvider=HRMS&" + 
-	"PortalCRefLabel=Student%20Center&" + 
-	"PortalRegistryName=EMPLOYEE&" + 
-	"PortalServletURI=https%3a%2f%2fcms.mmu.edu.my%2fpsp%2fcsprd%2f&" + 
-	"PortalURI=https%3a%2f%2fcms.mmu.edu.my%2fpsc%2fcsprd%2f&" + 
-	"PortalHostNode=HRMS&" + 
-	"NoCrumbs=yes&" + 
+var url_stdCtr =
+	"https://cms.mmu.edu.my/psc/csprd/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL?" +
+	"PORTALPARAM_PTCNAV=HC_SSS_STUDENT_CENTER&" +
+	"EOPP.SCNode=HRMS&" +
+	"EOPP.SCPortal=EMPLOYEE&" +
+	"EOPP.SCName=CO_EMPLOYEE_SELF_SERVICE&" +
+	"EOPP.SCLabel=Self%20Service&" +
+	"EOPP.SCPTfname=CO_EMPLOYEE_SELF_SERVICE&" +
+	"FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HC_SSS_STUDENT_CENTER&" +
+	"IsFolder=false&" +
+	"PortalActualURL=https%3a%2f%2fcms.mmu.edu.my%2fpsc%2fcsprd%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL&" +
+	"PortalContentURL=https%3a%2f%2fcms.mmu.edu.my%2fpsc%2fcsprd%2fEMPLOYEE%2fHRMS%2fc%2fSA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL&" +
+	"PortalContentProvider=HRMS&" +
+	"PortalCRefLabel=Student%20Center&" +
+	"PortalRegistryName=EMPLOYEE&" +
+	"PortalServletURI=https%3a%2f%2fcms.mmu.edu.my%2fpsp%2fcsprd%2f&" +
+	"PortalURI=https%3a%2f%2fcms.mmu.edu.my%2fpsc%2fcsprd%2f&" +
+	"PortalHostNode=HRMS&" +
+	"NoCrumbs=yes&" +
 	"PortalKeyStruct=yes";
 
-var url_schedule = 
-	"https://cms.mmu.edu.my/psc/csprd/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL?" + 
-	"FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HCCC_ENROLLMENT.HC_SSR_SSENRL_LIST&" + 
-	"IsFolder=false&" + 
+var url_schedule =
+	"https://cms.mmu.edu.my/psc/csprd/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL?" +
+	"FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HCCC_ENROLLMENT.HC_SSR_SSENRL_LIST&" +
+	"IsFolder=false&" +
 	"IgnoreParamTempl=FolderPath%2cIsFolder";
 
 function startDashboard() {
   loadHTMLpage_Home();
-  ajaxAttendance(url_attendance); 
+  ajaxAttendance(url_attendance);
   ajaxStudentCenter(url_stdCtr);
   ajaxSchedule(url_schedule);
 }
 
 if (isLoggedin() && isStudent()) {
   if (isDashOn)
-    startDashboard();  
+    startDashboard();
   else
     showFabButton(true);
 }
 
-function isStudent() {  
+function isStudent() {
   var _userid = getCookie("SignOnDefault");
   if (_userid != "")
     if (isNaN(_userid))
