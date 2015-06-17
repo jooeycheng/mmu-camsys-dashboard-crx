@@ -844,19 +844,20 @@ function displayUsername(theUsername) {
 
 function displayAcademicDate(trimester) {
   var today = new Date();
-  // today  = new Date("Mar 30, 2015"); // testing
+  // today  = new Date("Jun 22, 2015"); // testing
   var daysList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   var monthsList = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   var theDate = today.getDate() + " " + monthsList[today.getMonth()] + " " + today.getFullYear() + " (" + daysList[today.getDay()] + ")";
   $("#theDate").html(trimester + "<br>" + theDate);
 
-  var sem3_2014_2015 = new Date("Mar 30, 2015");
-  var startSem  = new Date("Oct 20, 2014");
-  if (today >= sem3_2014_2015) // if new sem edi, restart week count
-    startSem  = sem3_2014_2015;
+  var Sem_2 = new Date("Nov 16, 2015");
+  var Sem_1 = new Date("Jun 22, 2015");
+  if (today >= Sem_2) // if new sem edi, restart week count
+    Sem_1 = Sem_2;
 
-  var theWeek = Date.dateDiff('w', startSem, today) + 1; // plus 1 cos need +1 only correct, lol
+  var theWeek = Date.dateDiff('w', Sem_1, today) + 1; // plus 1 cos need +1 only correct, lol
 
+  // lazy to key in sem break dates. so, fk it.
   // if over 28 Dec, -1 (sem break)
   if (today > new Date("Dec 28, 2014") && today < new Date("Feb 16, 2015")) {
     theWeek -= 1;

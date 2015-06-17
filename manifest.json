@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "version": "1.0.24",
-  "name": "MMU CaMSys Dashboard",  
+  "version": "1.0.25",
+  "name": "MMU CaMSys Dashboard",
   "description": "Replaces login page design and adds a dashboard feature to CaMSys.",
 
   "background": {
@@ -33,7 +33,7 @@
     "storage",
     "https://cms.mmu.edu.my/*"
   ],
-  
+
   "web_accessible_resources": [
     "icon/*",
     "fonts/*",
