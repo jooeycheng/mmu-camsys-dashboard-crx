@@ -2,6 +2,8 @@ MMU CaMSys Dashboard
 ====================
 
 (Google Chrome browser extension)
+Link on Chrome Webstore:
+https://chrome.google.com/webstore/detail/mmu-camsys-dashboard/lepjdepdjclpgiknnfakgohejcljhphh?utm_source=chrome-app-launcher-info-dialog
 
 For Student account only.
 
@@ -16,5 +18,5 @@ FEATURES:
 Notice:
 - Venue codes for Melaka campus cannot be converted to old, as I'm not familiar with Melaka venue codes
 
-Link to CaMSys: 
+Link to CaMSys:
 https://cms.mmu.edu.my/psp/csprd/?cmd=login&languageCd=ENG
