@@ -778,6 +778,14 @@ function printTimeToTable(i, el, timeObj, section) {
     });
 }
 
+function displayScheduleError(error_msg) {
+  var page_with_error_url = "https://cms.mmu.edu.my/psp/csprd/EMPLOYEE/HRMS/c/SA_LEARNER_SERVICES.SSR_SSENRL_LIST.GBL?PORTALPARAM_PTCNAV=HC_SSR_SSENRL_LIST&EOPP.SCNode=HRMS&EOPP.SCPortal=EMPLOYEE&EOPP.SCName=CO_EMPLOYEE_SELF_SERVICE&EOPP.SCLabel=Self%20Service&EOPP.SCPTfname=CO_EMPLOYEE_SELF_SERVICE&FolderPath=PORTAL_ROOT_OBJECT.CO_EMPLOYEE_SELF_SERVICE.HCCC_ENROLLMENT.HC_SSR_SSENRL_LIST&IsFolder=false";
+  var schedule_error = $("#schedule_error");
+  schedule_error.find('#schedule_error_msg').text(error_msg);
+  schedule_error.find('#schedule_error_page').attr('href', page_with_error_url);
+  schedule_error.removeClass('hidden');
+}
+
 function displaySchedule(theScheduleArray) {
 
   // theScheduleArray properties:
@@ -992,12 +1000,28 @@ function ajaxSchedule(theUrl) {
     success: function(data) {
       var elements = $("<body>").html(data)[0];
       var theHTML = elements.innerHTML;
+
+      // if schedule exists
       var data_schedule = $(theHTML).find(".PSGROUPBOXWBO");
 
-      data_schedule.splice(0, 1); // Remove 1st element (Schedule Filter Options)
+      // if 'You do not have access to the calss schedule at this time'
+      var data_schedule_error = $(theHTML).find("#DERIVED_REGFRM1_SS_MESSAGE_LONG");
 
-      var theSchedule = formatSchedule(data_schedule);
-      displaySchedule(theSchedule);
+      if (data_schedule_error.length > 0) {
+        console.log('schedule has error');
+
+        var error_msg = data_schedule_error.text();
+        displayScheduleError(error_msg);
+      }
+
+      if (data_schedule.length > 0) {
+        console.log('schedule exists');
+
+        data_schedule.splice(0, 1); // Remove 1st element (Schedule Filter Options)
+
+        var theSchedule = formatSchedule(data_schedule);
+        displaySchedule(theSchedule);
+      }
 
       updateLoading("Schedule");
     }

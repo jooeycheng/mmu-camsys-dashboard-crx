@@ -46,13 +46,13 @@ html,body {
 	width: 100%;
 
 }
-#header_toolbar {	
+#header_toolbar {
 	height: 30px;
 	padding: 15px 25px;
 	background: #03a9f4;
 	color: white;
 	box-shadow: 0px 3px 5px #888888;
-	font-size: 22px;	
+	font-size: 22px;
 }
 #toolbar_container {
 	/*background: red;*/
@@ -79,7 +79,7 @@ a.fab div {
 	border-radius: 50%;
 	box-shadow: 0 1px 8px rgba(0,0,0,0.8);
 }
-#header_panel_container {	
+#header_panel_container {
 	height: 100%;
 	max-height: 540px;
 	max-width: 1370px;
@@ -92,6 +92,7 @@ a.fab div {
 }
 #section_schedule {
 	width: 52%;
+	position: relative;
 	/*min-height: 80%;*/ /*Follow height of content*/
 }
 #section_finance {
@@ -105,7 +106,7 @@ a.fab div {
 #section_calendar {
 	width: 18%;
 }
-.card {	
+.card {
 	float: left;
 	margin-left: 20px;
 	margin-top: 18px;
@@ -125,7 +126,7 @@ a.fab div {
 	margin: 0;
 	border-color: #AAAAAA;
 	border-width: 1px;
-	border-style: solid none none;	
+	border-style: solid none none;
 }
 .itemlist {
 	margin: 0;
@@ -142,7 +143,7 @@ a.fab div {
 	/*float: left;*/
 
 }
-.itemlist_lectut {	
+.itemlist_lectut {
 	width: 100%;
 	height: 50px;
 	padding-top: 6px;
@@ -181,7 +182,7 @@ a.fab div {
 }
 .itemlist_lectut div div span { /*percentage in donut*/
 	position: relative;
-	top: 6px;	
+	top: 6px;
 }
 .itemlist_lectut div div span span {
 	font-size: 12px;
@@ -213,7 +214,7 @@ table.table_schedule {
 	margin-top: 4px;
 	margin-bottom: 4px;
 	width: 99%;
-	border-collapse: collapse;	
+	border-collapse: collapse;
 	background: #E8EAF6;
 }
 table.table_schedule th {
@@ -227,7 +228,7 @@ table.table_schedule td {
 	font-weight: lighter;
 	font-size: 12px;
 	text-align: left;
-	vertical-align: top;	
+	vertical-align: top;
 }
 
 table.table_schedule th.time {
@@ -236,7 +237,7 @@ table.table_schedule th.time {
 
 }
 table.table_schedule th.day {
-	width: 18%;	
+	width: 18%;
 }
 table.table_schedule td.day {
 	padding-left: 5px;
@@ -246,7 +247,7 @@ table.table_schedule td.day {
 table.table_schedule td.subjects p {
 	margin: 3px 10px;
 }
-.color01 { 
+.color01 {
 	background: #f4b083; /*peach*/
 }
 .color02 {
@@ -265,7 +266,7 @@ table.table_schedule td.subjects p {
 	background: #FFB5FF; /*pink*/
 }
 .color07 {
-	background: #FFF; /*white*/	
+	background: #FFF; /*white*/
 }
 
 div.btn_logout {
@@ -273,7 +274,7 @@ div.btn_logout {
 	border-radius: 50%;
 	text-align: center;
 	width: 35px;
-	height: 35px;	
+	height: 35px;
 	margin-top: -2px;
 }
 div.btn_logout:hover {
@@ -292,7 +293,7 @@ div.btn_logout span.fa {
 	float: right;
 	width: 25px;
 	height: 25px;
-	padding: 1px;	
+	padding: 1px;
 	border-radius: 50%;
 	margin-left: 6px;
 	margin-top: -3px;
@@ -349,8 +350,50 @@ div.btn_logout span.fa {
 	padding-bottom: 50px;
 }
 #dashboard_container {
-	margin: auto;	
+	margin: auto;
 	font-family: 'RobotoDraft', sans-serif;
 	/*background: #E5E5E5;*/
-	min-width: 1000px;	
+	min-width: 1000px;
+}
+
+#schedule_error {
+	background: rgba(0,0,0,0.5);
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#schedule_error.hidden {
+	display: none;
+}
+
+#schedule_error .content {
+	box-shadow: 0px 3px 5px #303030;
+	background: white;
+	text-align: center;
+	margin: auto;
+	width: 70%;
+	margin-top: 120px;
+	padding: 10px;
+}
+
+#schedule_error .error_msg {
+	font-family: 'RobotoDraft', sans-serif;
+	font-weight: lighter;
+	font-size: 14px;
+	color: #1A237E;
+}
+
+#schedule_error .more_info {
+	font-family: 'RobotoDraft', sans-serif;
+	font-weight: lighter;
+	font-size: 14px;
+	color: #1E88E5;
+	text-decoration: none;
+	cursor: pointer;
+}
+#schedule_error .more_info:hover {
+	text-decoration: underline;
 }

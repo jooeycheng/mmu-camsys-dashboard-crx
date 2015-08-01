@@ -10,12 +10,12 @@
 		<div id="toolbar_container">
 			<span id="userId">0000000000</span> &nbsp <span id="userName">Name</span>
 			<div class="btn_logout button" title="Logout" onclick="logout()"><span class="fa fa-sign-in"></span></div>
-		</div>		
+		</div>
 	</div>
 
 	<div id="header_panel_container">
 
-		<div id="printHeader">			
+		<div id="printHeader">
 			<h1><img>CaMSys Dashboard</h1>
 		</div>
 
@@ -29,7 +29,14 @@
 					<span class="fa fa-sort-numeric-asc"></span></div>
 				<div class="button fab_blue sch_btn btn2" title="Print schedule" onclick="window.print()"><span class="fa fa-print"></span></div>
 			</h1>
-			
+
+			<div id="schedule_error" class="hidden">
+				<div class="content">
+					<h2 class="error_msg" id="schedule_error_msg">Error Message</h2>
+					<p class="more_info" id="schedule_error_page" href="#">More Info</p>
+				</div>
+			</div>
+
 			<table id="theSchedule" class="table_schedule">
 				<tr>
 					<th class="time">Time</th>
@@ -48,7 +55,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -64,7 +71,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -80,7 +87,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -96,7 +103,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -112,7 +119,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -128,7 +135,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -144,7 +151,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -160,7 +167,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -176,7 +183,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -192,7 +199,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -208,7 +215,7 @@
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 				</tr>
-				<tr>					
+				<tr>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
 					<td class="day">&nbsp</td>
@@ -221,7 +228,7 @@
 						<!-- <p class="">&nbsp</p> -->
 					</td>
 					<td colspan="3" class="subjects">
-						<!-- <p class="">&nbsp</p> -->						
+						<!-- <p class="">&nbsp</p> -->
 					</td>
 				</tr>
 			</table>
@@ -244,9 +251,9 @@
 				<div class="itemlist_balance">
 					<h4>RM</h4>
 					<h2 id="amountDue">$.$$</h2>
-				</div>				
+				</div>
 			</div>
-		</div>		
+		</div>
 
 		<div id="section_advisor" class="card">
 			<h1>Advisor</h1>
@@ -262,7 +269,7 @@
 				</div>				 -->
 			</div>
 		</div>
-		
+
 	</div>
 </div>
 </div>
