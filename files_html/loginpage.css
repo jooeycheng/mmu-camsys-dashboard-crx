@@ -29,7 +29,7 @@
 	font-weight: normal;
 }
 
-html,body {	
+html,body {
 	/*max-width: 1366px;*/
 	/*min-width: 1360px;*/
 	/*min-width: 1000px;*/
@@ -49,7 +49,7 @@ section#login-container {
 	background: #FFF;
 	width: 300px;
 	margin-top: 110px;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.8);	
+	box-shadow: 0 1px 3px rgba(0,0,0,0.8);
 }
 
 @media screen and (min-height: 900px) {
@@ -58,14 +58,14 @@ section#login-container {
 	}
 }
 
-section#login-container div#logo {	
+section#login-container div#logo {
 	padding-bottom: 10px;
 }
-section#login-container p#mmulogo {	
+section#login-container p#mmulogo {
 	text-align: center;
-	padding-top: 20px;	
+	padding-top: 20px;
 }
-section#login-container p#mmulogo img {	
+section#login-container p#mmulogo img {
 	width: 80px;
 }
 section#login-container #logotitle {
@@ -90,7 +90,7 @@ section#login-container #logotitle {
 #login #invaliduserpass {
 	color: #dd4b39;
 	font-size: 14px;
-	text-align: center;	
+	text-align: center;
 }
 #login form {
 	margin-top: 10px;
@@ -108,7 +108,7 @@ section#login-container #logotitle {
 	width: 85%;
 	border: 1px solid #CCC;
 	padding: 4%;
-	font-size: 95%;	
+	font-size: 95%;
 	letter-spacing: 1px;
 }
 #login form #pwd {
@@ -140,7 +140,7 @@ input:focus {
 	border: none;
 }
 section#below {
-	margin: auto;	
+	margin: auto;
 	width: 300px;
 	margin-top: 8px;
 }
@@ -155,17 +155,18 @@ section#below a {
 	/*display: inline;*/
 	/*top: -50px;*/
 	/*left: 245px;*/
+	text-decoration: none;
 }
 section#below a:hover {
 	text-decoration: underline;
 	/*cursor: pointer;*/
 }
 #disable {
-	margin: 0;	
+	margin: 0;
 	font-weight: lighter;
 	font-size: 12px;
 	color: rgba(0,0,0,0.7);
-	text-decoration: none;	
+	text-decoration: none;
 }
 #disable:hover {
 	text-decoration: underline;
@@ -193,11 +194,11 @@ section#below a:hover {
   /*list-style-position: inside;*/
 }
 #slider_knownissue li {
-  margin: 0;  
+  margin: 0;
   font-size: 12px;
   font-weight: lighter;
   /*list-style-type: none;*/
 }
 #slider_knownissue a {
-  
+
 }
