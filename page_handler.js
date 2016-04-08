@@ -858,12 +858,21 @@ function displayAcademicDate(trimester) {
   var theDate = today.getDate() + " " + monthsList[today.getMonth()] + " " + today.getFullYear() + " (" + daysList[today.getDay()] + ")";
   $("#theDate").html(trimester + "<br>" + theDate);
 
-  var Sem_2 = new Date("Nov 16, 2015");
-  var Sem_1 = new Date("Jun 22, 2015");
-  if (today >= Sem_2) // if new sem edi, restart week count
-    Sem_1 = Sem_2;
+  // Hardcode semesters
+  var semesters = [
+                    "3 Apr, 2016", // 2015/16 T3
+                    "4 Jul, 2016"  // 2016/17 T1
+                  ];
 
-  var theWeek = Date.dateDiff('w', Sem_1, today) + 1; // plus 1 cos need +1 only correct, lol
+  var currentSem;
+  for (i = 0; i < semesters.length; i++) {
+    var s = new Date(semesters[i]);
+    if (today >= s) {
+      currentSem = s;
+    }
+  }
+
+  var theWeek = Date.dateDiff('w', currentSem, today) + 1; // plus 1 cos need +1 only correct, lol
 
   // lazy to key in sem break dates. so, fk it.
   // if over 28 Dec, -1 (sem break)
