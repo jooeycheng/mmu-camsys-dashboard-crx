@@ -40,15 +40,13 @@
     "images/*",
     "files_html/*",
     "files_script/*",
-    "jquery.min.js",
-    "angular.min.js",
-    "angular.min.js.map"
+    "jquery.min.js"
   ],
 
   "content_scripts": [
     {
       "matches":    ["https://cms.mmu.edu.my/*"],
-      "js":         ["angular.min.js", "jquery.min.js", "page_handler.js"]
+      "js":         ["jquery.min.js", "page_handler.js"]
     }
   ]
 }
